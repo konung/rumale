@@ -1,0 +1,21 @@
+module Rumale
+  module Base
+    # Module for all regressors in Rumale.
+    module Regressor
+      include Validation
+
+      # An abstract method for fitting a model.
+      def fit: () -> untyped
+
+      # An abstract method for predicting labels.
+      def predict: () -> untyped
+
+      # Calculate the coefficient of determination for the given testing data.
+      #
+      # @param x [Numo::DFloat] (shape: [n_samples, n_features]) Testing data.
+      # @param y [Numo::DFloat] (shape: [n_samples, n_outputs]) Target values for testing data.
+      # @return [Float] Coefficient of determination
+      def score: (untyped x, untyped y) -> untyped
+    end
+  end
+end

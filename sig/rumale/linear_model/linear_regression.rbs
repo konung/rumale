@@ -1,0 +1,28 @@
+module Rumale
+  module LinearModel
+    class LinearRegression < BaseSGD
+      include Base::Regressor
+
+      @params: Hash[Symbol,untyped]
+
+      attr_reader weight_vec: Numo::DFloat?
+      attr_reader bias_term: Float? | Numo::DFloat?
+      attr_reader rng: Random?
+
+      def initialize: (?learning_rate: Float, ?decay: Float?, ?momentum: Float, ?fit_bias: bool, ?bias_scale: Float,
+                       ?max_iter: Integer, ?batch_size: Integer, ?tol: Float, ?solver: String, ?n_jobs: Integer?,
+                       ?verbose: bool, ?random_seed: Integer?) -> untyped
+      def fit: (Numo::DFloat x, Numo::DFloat y) -> LinearRegression
+      def predict: (Numo::DFloat x) -> Numo::DFloat
+
+      private
+
+      def fit_svd: (Numo::DFloat x, Numo::DFloat y) -> [Numo::DFloat, Numo::DFloat | Float]
+      def fit_lbfgs: (Numo::DFloat x, Numo::DFloat y) -> [Numo::DFloat, Numo::DFloat | Float]
+      def fit_sgd: (Numo::DFloat x, Numo::DFloat y) -> [Numo::DFloat, Numo::DFloat | Float]
+      def single_target?: (Numo::DFloat y) -> bool
+      def init_weight: (Integer n_features, Integer n_outputs) -> Numo::DFloat
+      def split_weight_mult: (Numo::DFloat w) -> [Numo::DFloat, Numo::DFloat | Float]
+    end
+  end
+end

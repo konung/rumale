@@ -1,0 +1,13 @@
+module Rumale
+  # @!visibility private
+  module Utils
+    # @!visibility private
+    def self?.choice_ids: (untyped size, untyped probs, ?untyped? rng) -> untyped
+
+    # @!visibility private
+    def self?.rand_uniform: (untyped shape, ?untyped? rng) -> untyped
+
+    # @!visibility private
+    def self?.rand_normal: (untyped shape, ?untyped? rng, ?::Float mu, ?::Float sigma) -> untyped
+  end
+end

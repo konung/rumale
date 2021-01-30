@@ -1,0 +1,67 @@
+module Rumale
+  # @!visibility private
+  module Validation
+    # @!visibility private
+    def self?.check_convert_sample_array: (untyped x) -> untyped
+
+    # @!visibility private
+    def self?.check_convert_label_array: (untyped y) -> untyped
+
+    # @!visibility private
+    def self?.check_convert_tvalue_array: (untyped y) -> untyped
+
+    # @deprecated Use check_convert_sample_array instead of this method.
+    # @!visibility private
+    def self?.check_sample_array: (untyped x) -> nil
+
+    # @deprecated Use check_convert_label_array instead of this method.
+    # @!visibility private
+    def self?.check_label_array: (untyped y) -> nil
+
+    # @deprecated Use check_convert_tvalue_array instead of this method.
+    # @!visibility private
+    def self?.check_tvalue_array: (untyped y) -> nil
+
+    # @!visibility private
+    def self?.check_sample_label_size: (untyped x, untyped y) -> nil
+
+    # @!visibility private
+    def self?.check_sample_tvalue_size: (untyped x, untyped y) -> nil
+
+    # TODO: Better to replace with RBS in the future.
+    # @!visibility private
+    def self?.check_params_type: (untyped `type`, ?::Hash[untyped, untyped] params) -> nil
+
+    # TODO: Better to replace with RBS in the future.
+    # @!visibility private
+    def self?.check_params_type_or_nil: (untyped `type`, ?::Hash[untyped, untyped] params) -> nil
+
+    # TODO: Better to replace with RBS in the future.
+    # @!visibility private
+    def self?.check_params_numeric: (?::Hash[untyped, untyped] params) -> untyped
+
+    # TODO: Better to replace with RBS in the future.
+    # @!visibility private
+    def self?.check_params_numeric_or_nil: (?::Hash[untyped, untyped] params) -> untyped
+
+    # @deprecated Use check_params_numeric instead of this method.
+    # @!visibility private
+    def self?.check_params_float: (?::Hash[untyped, untyped] params) -> untyped
+
+    # @deprecated Use check_params_numeric instead of this method.
+    # @!visibility private
+    def self?.check_params_integer: (?::Hash[untyped, untyped] params) -> untyped
+
+    # TODO: Better to replace with RBS in the future.
+    # @!visibility private
+    def self?.check_params_string: (?::Hash[untyped, untyped] params) -> untyped
+
+    # TODO: Better to replace with RBS in the future.
+    # @!visibility private
+    def self?.check_params_boolean: (?::Hash[untyped, untyped] params) -> nil
+
+    # TODO: Better to replace with RBS in the future.
+    # @!visibility private
+    def self?.check_params_positive: (?::Hash[untyped, untyped] params) -> nil
+  end
+end

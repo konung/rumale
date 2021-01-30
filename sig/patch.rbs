@@ -1,0 +1,32 @@
+
+# Classes
+module Numo
+  class NArray
+  end
+
+  class Int32 < NArray
+    def shape: () -> [Integer]
+    def reshape: (untyped) -> Numo::Int32
+    def ndim: () -> Integer
+    def transpose: () -> Numo::Int32
+    def []: (untyped) -> untyped
+    def []=: (untyped, untyped) -> untyped
+  end
+
+  class DFloat < NArray
+    def shape: () -> [untyped]
+    def reshape: (*untyped) -> Numo::DFloat
+    def ndim: () -> Integer
+    def transpose: () -> Numo::DFloat
+    def dot: (untyped) -> DFloat
+    def sum: (*untyped) -> Float
+    def []: (*untyped, untyped) -> untyped
+    def []=: (*untyped, untyped) -> untyped
+    def -: (untyped) -> Numo::DFloat
+    def **: (untyped) -> Numo::DFloat
+    def *: (untyped) -> Numo::DFloat
+    def self.zeros: (*untyped) -> Numo::DFloat
+    def flatten: () -> Numo::DFloat
+    def dup: () -> Numo::DFloat
+  end
+end

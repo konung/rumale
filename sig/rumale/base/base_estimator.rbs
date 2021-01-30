@@ -1,0 +1,21 @@
+module Rumale
+  # This module consists of basic mix-in classes.
+  module Base
+    # Base module for all estimators in Rumale.
+    module BaseEstimator
+      # Return parameters about an estimator.
+      # @return [Hash]
+      attr_reader params: untyped
+
+      private
+
+      def enable_linalg?: (?warning: bool warning) -> (::FalseClass | ::TrueClass)
+
+      def enable_parallel?: () -> (::FalseClass | ::TrueClass)
+
+      def n_processes: () -> (1 | untyped)
+
+      def parallel_map: (untyped n_outputs) { () -> untyped } -> untyped
+    end
+  end
+end

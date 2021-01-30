@@ -1,0 +1,131 @@
+module Rumale
+  module LinearModel
+    # @!visibility private
+    # This module consists of the classes that implement penalty (regularization) term.
+    module Penalty
+      # @!visibility private
+      # L2Penalty is a class that applies L2 penalty to weight vector of linear model.
+      # This class is used internally.
+      class L2Penalty
+        # @!visibility private
+        def initialize: (reg_param: untyped reg_param) -> untyped
+
+        # @!visibility private
+        def call: (untyped weight, untyped lr) -> untyped
+      end
+
+      # @!visibility private
+      # L1Penalty is a class that applies L1 penalty to weight vector of linear model.
+      # This class is used internally.
+      class L1Penalty
+        # @!visibility private
+        def initialize: (reg_param: untyped reg_param) -> untyped
+
+        # @!visibility private
+        def call: (untyped weight, untyped lr) -> untyped
+      end
+    end
+
+    # @!visibility private
+    # This module consists of the class that implements stochastic gradient descent (SGD) optimizer.
+    module Optimizer
+      # @!visibility private
+      # SGD is a class that implements SGD optimizer.
+      # This class is used internally.
+      class SGD
+        # @!visibility private
+        # Create a new SGD optimizer.
+        # @param learning_rate [Float] The initial value of learning rate.
+        # @param momentum [Float] The initial value of momentum.
+        # @param decay [Float] The smooting parameter.
+        def initialize: (?learning_rate: ::Float learning_rate, ?momentum: ::Float momentum, ?decay: ::Float decay) -> untyped
+
+        # @!visibility private
+        def current_learning_rate: () -> untyped
+
+        # @!visibility private
+        def call: (untyped weight, untyped gradient) -> untyped
+      end
+    end
+
+    # @!visibility private
+    # This module consists of the classes that implement loss function for linear model.
+    module Loss
+      # @!visibility private
+      # MeanSquaredError is a class that calculates mean squared error for linear regression model.
+      class MeanSquaredError
+        # @!visibility private
+        def loss: (untyped `out`, untyped y) -> untyped
+
+        # @!visibility private
+        def dloss: (untyped `out`, untyped y) -> untyped
+      end
+
+      # @!visibility private
+      # LogLoss is a class that calculates logistic loss for logistic regression.
+      class LogLoss
+        # @!visibility private
+        def loss: (untyped `out`, untyped y) -> untyped
+
+        # @!visibility private
+        def dloss: (untyped `out`, untyped y) -> untyped
+      end
+
+      # @!visibility private
+      # HingeLoss is a class that calculates hinge loss for support vector classifier.
+      class HingeLoss
+        # @!visibility private
+        def loss: (untyped `out`, untyped y) -> untyped
+
+        # @!visibility private
+        def dloss: (untyped `out`, untyped y) -> untyped
+      end
+
+      # @!visibility private
+      # EpsilonInsensitive is a class that calculates epsilon insensitive for support vector regressor.
+      class EpsilonInsensitive
+        # @!visibility private
+        def initialize: (?epsilon: ::Float epsilon) -> untyped
+
+        # @!visibility private
+        def loss: (untyped `out`, untyped y) -> untyped
+
+        # @!visibility private
+        def dloss: (untyped `out`, untyped y) -> untyped
+      end
+    end
+
+    # BaseSGD is an abstract class for implementation of linear model with mini-batch stochastic gradient descent (SGD) optimization.
+    # This class is used internally.
+    class BaseSGD
+      include Rumale::Base::BaseEstimator
+
+      # Create an initial linear model.
+      def initialize: () -> untyped
+
+      private
+
+      L2_PENALTY: ::String
+
+      L1_PENALTY: ::String
+
+      ELASTICNET_PENALTY: ::String
+
+      def partial_fit: (untyped x, untyped y) -> untyped
+
+      def expand_feature: (untyped x) -> untyped
+
+      def split_weight: (untyped weight) -> untyped
+
+      def fit_bias?: () -> untyped
+
+      def apply_l2_penalty?: () -> untyped
+
+      def apply_l1_penalty?: () -> untyped
+
+      def l2_reg_param: () -> untyped
+
+      def l1_reg_param: () -> untyped
+    end
+  end
+end
